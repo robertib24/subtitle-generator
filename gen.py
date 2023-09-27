@@ -4,6 +4,7 @@ from typing import Iterable
 
 model_size="large-v2"      
 model = WhisperModel(model_size, device="cuda", compute_type="float16")
+file_name="-"
 
 def format_timestamp(seconds: float, always_include_hours: bool = True):
     assert seconds >= 0, "non-negative timestamp expected"
@@ -22,7 +23,7 @@ def format_timestamp(seconds: float, always_include_hours: bool = True):
     return f"{hours_marker}{minutes:02d}:{seconds:02d}.{milliseconds:03d}"
 
 transcription, _ = model.transcribe(
-            str("onlymp3.to - Esaret 171. Bölüm Redemption Episode 171-QO2R2qKSGek-192k-1695684116.mp3"),
+            str(file_name),
             language="tr",
             vad_filter="True",
             vad_parameters=dict(
@@ -34,4 +35,4 @@ transcription, _ = model.transcribe(
 
 for segment in transcription:
       print(f"{format_timestamp(segment.start)} --> {format_timestamp(segment.end)} {segment.text}")
-      audio_basename = os.path.basename(str("onlymp3.to - Esaret 171. Bölüm Redemption Episode 171-QO2R2qKSGek-192k-1695684116.mp3")).rsplit(".", 1)[0]
+      audio_basename = os.path.basename(str("file_name")).rsplit(".", 1)[0]
