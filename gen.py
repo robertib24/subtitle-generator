@@ -35,4 +35,4 @@ transcription, _ = model.transcribe(
 
 for segment in transcription:
       print(f"{format_timestamp(segment.start)} --> {format_timestamp(segment.end)} {segment.text}")
-      audio_basename = os.path.basename(str("file_name")).rsplit(".", 1)[0]
+      audio_basename = os.path.basename(str(file_name)).rsplit(".", 1)[0]
