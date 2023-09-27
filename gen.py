@@ -1,3 +1,4 @@
+import os
 from faster_whisper import WhisperModel
 from faster_whisper.transcribe import Segment
 from typing import Iterable
